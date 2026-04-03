@@ -9,7 +9,7 @@ const cartRouter = require("./routes/cartroutes");
 const uploadRouter = require("./routes/upload");
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 require("./models/db");
 
@@ -23,6 +23,7 @@ app.use("/upload", uploadRouter);
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
+
 app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
